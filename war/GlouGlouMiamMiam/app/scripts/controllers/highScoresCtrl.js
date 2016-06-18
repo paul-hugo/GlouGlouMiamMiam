@@ -48,6 +48,10 @@ angular.module('glouGlouMiamMiamApp')
     //     score: 2
     //   }
     // ];
+	  
+	$scope.states = {
+		scoresLoaded: 0
+	};
 
   
 
@@ -63,6 +67,7 @@ angular.module('glouGlouMiamMiamApp')
 	// Récupère les scores
     GApi.execute('highscoresendpoint', 'listTenHighScores').then( function(resp) {
         $scope.scores = resp.items;
+        $scope.states.scoresLoaded = 1;
         console.log(resp.items);
     });
 

@@ -21,7 +21,12 @@ angular.module('glouGlouMiamMiamApp')
           console.log(user);
 
           $rootScope.login = 1;
+          
+          // Affiche le nom  utilisateur sinon "Connecté"
           $rootScope.user = user;
+          if(user.given_name == '') {
+        	  $rootScope.user.given_name = "Connected"; 
+          }
 
           callback();
 

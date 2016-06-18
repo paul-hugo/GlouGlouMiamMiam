@@ -260,7 +260,7 @@ angular.module('glouGlouMiamMiamApp')
       $scope.game.nbQuestions = 0;
       $scope.game.questions = [];
       $scope.game.questions.length = 0;
-      getQuestions(1);
+      getQuestions(5);
     };
 
     /*

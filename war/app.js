@@ -95,7 +95,12 @@ angular
               console.log(user.name + ' is already login');
               console.log(user);
               $rootScope.login = 1;
+              
+              // Affiche le nom  utilisateur sinon "Connecté"
               $rootScope.user = user;
+              if(user.given_name == '') {
+            	  $rootScope.user.given_name = "Connected"; 
+              }
             },
             function() {
               // Rien à faire
