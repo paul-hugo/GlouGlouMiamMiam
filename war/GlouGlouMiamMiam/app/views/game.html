@@ -1,4 +1,4 @@
-<div class="row game-row" id="game-row">
+<div class="row game-row" id="game-row" ng-hide="displayResults">
   <div class="columns small-12">
     <div class="callout ">
       <div class="row div-timeline text-center">
@@ -60,35 +60,37 @@
   </div>
 </div>
 
-<div class="reveal" id="scoresModal" data-reveal>
-  <div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
-    <div class="progress-meter" ng-style="scoresModalProgressBar"></div>
-  </div>
-  <hr>
-  <p class="lead"><span class="bigScore">{{ game.score }}</span> point(s)</p>
-  <hr>
-  <p class="text-center">
-    <strong>Réponse:</strong><br/>
-    Ca se {{ msgDisplayed.modal1.action }} en {{ msgDisplayed.modal1.dpt }}
-  </p>
-</div>
-
-<div class="reveal" id="finalScoresModal" data-reveal>
-  <p class="lead">Wouhaaaaaaaa</p>
-  <hr>
-  <p>Tu as <span class="bigScore">{{ game.score }}</span> point(s)</p>
-  <hr>
-  <p>
-    <ul>
-      <li ng-repeat="question in game.questions">"{{ question.produit }}" est en {{ question.dpt }}</li>
-    </ul>
-  </p>
-  <p class="text-center">
-    <button class="button" ng-click="reloadGame()">Nouvelle partie</button>
-    <button class="button" ng-click="saveScore()" ng-hide="states.saveScoreOk">Enregistrer le score</button>
-    <button class="button" disabled="disabled" ng-show="states.saveScoreOk">Score enregitré</button>
-  </p>
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&times;</span>
-  </button>
+<!-- Résultats -->
+<div class="row game-row" ng-show="displayResults">
+	<div class="columns small-6 small-offset-3">
+		<div class="callout">
+			<p class="lead">Wouhaaaaaaaa</p>
+			<hr>
+			<p>Tu as <span class="bigScore">{{ game.score }}</span> point(s)</p>
+			<hr>
+			<p>
+			  <ul>
+			    <li ng-repeat="question in game.questions">"{{ question.produit }}" est en {{ question.dpt }}</li>
+			  </ul>
+			</p>
+			<hr>
+			<p><strong>Enregistre ton score:</strong></p>
+			<form name="saveScoreForm" novalidate>
+			  <div class="input-group">
+			 	  <span class="input-group-label">Pseudo</span>
+			 <input class="input-group-field" name="saveScorePseudo" type="text" ng-model="saveScorePseudo" ng-minlength="2" ng-disabled="states.saveScoreOk" required="">
+			 <div class="input-group-button">
+			   <input type="submit" class="button" value="Enregistrer le score"  ng-disabled="saveScoreForm.$invalid || states.saveScoreOk" ng-click="saveScore()">
+			 </div>
+			  </div>
+			</form>
+			<div class="callout success" ng-show="states.saveScoreOk">
+			  <p>Score enregistré !</p>
+			</div>
+			<p class="text-center">
+			  <button class="button" ng-click="reloadGame()">Nouvelle partie</button>
+			  <button class="button" ng-click="GoToHighscores()">Go to highscores</button>
+			</p>
+		</div>
+	</div>
 </div>

@@ -16,6 +16,10 @@ body {
 	background-color: transparent;
 }
 
+.css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+}
+
 .ng-cloak { display: none !important; }
 
 .homeButton {

@@ -28,6 +28,21 @@
   "ownerName" : "mycompany.com",
   "packagePath" : "services",
   "methods" : {
+    "highscoresendpoint.listTenHighScores" : {
+      "path" : "listTenHighScores",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.listTenHighScores",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "highscoresendpoint.listHighScores" : {
       "path" : "listHighScores",
       "httpMethod" : "GET",
@@ -47,21 +62,6 @@
             "required" : false
           }
         },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "highscoresendpoint.listTenHighScores" : {
-      "path" : "listTenHighScores",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.listTenHighScores",
-      "request" : {
         "body" : "empty"
       },
       "response" : {
@@ -161,21 +161,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_HighScores" : {
-        "id" : "CollectionResponse_HighScores",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "HighScores"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "HighScores" : {
         "id" : "HighScores",
         "type" : "object",
@@ -202,17 +187,32 @@
             }
           }
         }
+      },
+      "CollectionResponse_HighScores" : {
+        "id" : "CollectionResponse_HighScores",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "HighScores"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "glougloumiammiam.HighScoresEndpoint.listHighScores" : {
-        "response" : {
-          "$ref" : "CollectionResponse_HighScores"
-        }
-      },
       "glougloumiammiam.HighScoresEndpoint.listTenHighScores" : {
         "response" : {
           "$ref" : "HighScoresCollection"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.listHighScores" : {
+        "response" : {
+          "$ref" : "CollectionResponse_HighScores"
         }
       },
       "glougloumiammiam.HighScoresEndpoint.getHighScores" : {

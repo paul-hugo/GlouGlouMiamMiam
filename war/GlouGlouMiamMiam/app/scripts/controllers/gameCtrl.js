@@ -17,6 +17,7 @@ angular.module('glouGlouMiamMiamApp')
                            '$timeout',
                            'GAuth',
                            'GApi',
+                           '$state',
                            function ($scope,
                                      $rootScope, 
                                      $http, 
@@ -25,7 +26,8 @@ angular.module('glouGlouMiamMiamApp')
                                      $anchorScroll, 
                                      $timeout,
                                      GAuth,
-                                     GApi) {
+                                     GApi,
+                                     $state) {
 
     // ****************************************************************
     //  VAR
@@ -70,6 +72,7 @@ angular.module('glouGlouMiamMiamApp')
       gameState: -1,
       buttonsState: -1,
       saveScoreOk: 0,
+      displayResults: 0,
       callout1: {
         display: 0,
         closeButton: 1
@@ -138,7 +141,8 @@ angular.module('glouGlouMiamMiamApp')
     function getQuestions(nbQuestions) {
 
       // Bornes min-max pour le random
-      var borneMax = 10998,
+      var borneMax = 1000,
+//          borneMax = 10998,
           borneMin = 1;
       // Random
       var id = Math.floor((Math.random() * borneMax) + borneMin);
@@ -196,7 +200,7 @@ angular.module('glouGlouMiamMiamApp')
         $scope.game.score = $scope.game.score + $scope.bareme.winAllQuestions;
       }
 
-      $scope.openFinalScoresModal(); // Affichage résultats
+      $scope.openFinalScores(); // Affichage résultats
     }
 
     /*
@@ -251,11 +255,12 @@ angular.module('glouGlouMiamMiamApp')
      * Initialisation des variables et récupération des questions
      */
     $scope.startGame = function() {
+      $scope.displayResults = 0;
       $scope.states.gameState = -1;
       $scope.game.nbQuestions = 0;
       $scope.game.questions = [];
       $scope.game.questions.length = 0;
-      getQuestions(5);
+      getQuestions(1);
     };
 
     /*
@@ -270,6 +275,8 @@ angular.module('glouGlouMiamMiamApp')
       $scope.states.saveScoreOk = 0;
       $scope.states.callout1.display = 0;
       $scope.states.callout1.closeButton = 1;
+      
+      console.log("AHAHAH:"+$scope.states.saveScoreOk);
 
       $scope.game.currentQuestion = 0;
       $scope.game.score = 0;
@@ -425,8 +432,9 @@ angular.module('glouGlouMiamMiamApp')
     /*
      * Affiche le modal des scores
      */
-    $scope.openFinalScoresModal = function () {
-      $('#finalScoresModal').foundation('open');
+    $scope.openFinalScores = function () {
+      //$('#finalScoresModal').foundation('open');
+      $scope.displayResults = 1;
     };
 
     /*
@@ -459,14 +467,27 @@ angular.module('glouGlouMiamMiamApp')
       GAuth.checkAuth().then(
           function (user) {
             //console.log(user.name + ' is already login');
-
+        	
+        	var name = '';  
+        	if($scope.saveScorePseudo != '') {
+	        	name = $scope.saveScorePseudo;
+        	} else {
+        		if(user.given_name != '') {
+        			name = user.given_name;
+        		} else {
+        			name = "Joueur anonyme";
+        		}
+        	}
+        	
+        	console.log(user);
+            
         	// Paramètres à envoyer
             var hs = {
               googleId: user.id,
-              nickName: user.given_name,
+              nickName: name,
               score: $scope.game.score
             };
-            
+        	
             // Call
             GApi.executeAuth('highscoresendpoint', 'updateNewHighScores', hs).then( function(resp) {
               $scope.states.saveScoreOk = 1;
@@ -481,6 +502,11 @@ angular.module('glouGlouMiamMiamApp')
           }
       );
     };
+    
+    $scope.GoToHighscores = function () {
+    	$('#finalScoresModal').foundation('close');
+    	$state.go('highscores');
+    }
 
     // ****************************************************************
     //  CARTE

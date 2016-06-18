@@ -64,8 +64,8 @@ angular
         };
 
         var CLIENT = '815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com';
-        var BASE = 'https://1-dot-glou-glou-miam-miam.appspot.com/_ah/api';
-//        var BASE = 'http://localhost:8888/_ah/api';
+//        var BASE = 'https://1-dot-glou-glou-miam-miam.appspot.com/_ah/api';
+        var BASE = 'http://localhost:8888/_ah/api';
 
         // Chargement des apis
         GApi.load('highscoresendpoint','v1',BASE)

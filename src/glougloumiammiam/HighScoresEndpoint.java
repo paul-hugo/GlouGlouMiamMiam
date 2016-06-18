@@ -204,9 +204,10 @@ public class HighScoresEndpoint {
 					//throw new EntityNotFoundException("Object does not exist");
 					mgr.makePersistent(highscores);
 				} else {
-					if(highscores.getScore() > hs.getScore()) {
-						mgr.makePersistent(highscores);
+					if(highscores.getScore() < hs.getScore()) {
+						highscores.setScore(hs.getScore());
 					}
+					mgr.makePersistent(highscores);
 				}
 			} else {
 				throw new OAuthRequestException(null);

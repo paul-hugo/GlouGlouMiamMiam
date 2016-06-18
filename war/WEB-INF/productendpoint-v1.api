@@ -28,6 +28,22 @@
   "ownerName" : "mycompany.com",
   "packagePath" : "services",
   "methods" : {
+    "productendpoint.insertProduct" : {
+      "path" : "product",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.ProductEndpoint.insertProduct",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "productendpoint.listProduct" : {
       "path" : "product",
       "httpMethod" : "GET",
@@ -48,22 +64,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "productendpoint.insertProduct" : {
-      "path" : "product",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "glougloumiammiam.ProductEndpoint.insertProduct",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -152,21 +152,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Product" : {
-        "id" : "CollectionResponse_Product",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Product"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Product" : {
         "id" : "Product",
         "type" : "object",
@@ -197,20 +182,35 @@
             "type" : "integer"
           }
         }
+      },
+      "CollectionResponse_Product" : {
+        "id" : "CollectionResponse_Product",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Product"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "glougloumiammiam.ProductEndpoint.listProduct" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Product"
-        }
-      },
       "glougloumiammiam.ProductEndpoint.insertProduct" : {
         "request" : {
           "$ref" : "Product"
         },
         "response" : {
           "$ref" : "Product"
+        }
+      },
+      "glougloumiammiam.ProductEndpoint.listProduct" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Product"
         }
       },
       "glougloumiammiam.ProductEndpoint.updateProduct" : {
