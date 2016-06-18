@@ -1,0 +1,94 @@
+<div class="row game-row" id="game-row">
+  <div class="columns small-12">
+    <div class="callout ">
+      <div class="row div-timeline text-center">
+        <div class="columns small-12">
+            <span class="badge timeline-badge" ng-class="{ 'secondary': game.currentQuestion != $index}" ng-repeat="i in getNumber(game.nbQuestions) track by $index" >{{ $index+1 }}</span>
+            <hr>
+            <h3 ng-show="states.gameState == 0">A toi de jouer !</h3>
+            <h3 ng-show="states.gameState == -1">C'est presque prêt...</h3>
+            <h3 ng-show="states.gameState == -2">Aïe... Ca marche pas...</h3>
+            <p ng-show="states.gameState == 0"><span class="bigScore">{{ game.score }}</span> point(s)</p>
+
+            <hr>
+        </div>
+      </div>
+
+      
+      <!-- Question -->
+      <div class="row expanded div-question text-center">
+          <h3><i>{{ game.questions[game.currentQuestion].produit }}</i></h3>
+          <!-- <div class="thumbnail">
+            <img src="images/gateau.jpg">
+          </div> -->
+      </div>
+
+      <!-- Buttons -->
+      <div class="row div-buttons">
+        <div class="columns small-6 text-right">
+          <button class="large button" ng-class="{'success': states.buttonsState == 1, 'alert': states.buttonsState == 0}" ng-Click="answering(0)">Glou Glou ?</button>
+        </div>
+        <div class="columns small-6 text-left">
+          <button class="large button" ng-class="{'success': states.buttonsState == 1, 'alert': states.buttonsState == 0}" ng-Click="answering(1)">Miam Miam ?</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columns small-12">
+          <div class="callout" ng-show="states.callout1.display" data-closable>
+            <p>
+              <strong>{{ msgDisplayed.callout1.insulte }}</strong><br/>
+              {{ msgDisplayed.callout1.text }}
+            </p>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close ng-click="$scope.states.callout1 = 0" ng-show="states.callout1.closeButton">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>  
+      </div>
+      
+
+      <!-- Maps -->
+      <div class="row div-map" id="dptMap">
+        <div class="columns small-12">
+          <h3>Où c'est ??</h3>
+          <h5>Dans quel département ??</h5>
+          <leaflet lf-center="france" geojson="geojson" defaults="defaults" event-broadcast="events" class="leafletMap"></leaflet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" id="scoresModal" data-reveal>
+  <div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+    <div class="progress-meter" ng-style="scoresModalProgressBar"></div>
+  </div>
+  <hr>
+  <p class="lead"><span class="bigScore">{{ game.score }}</span> point(s)</p>
+  <hr>
+  <p class="text-center">
+    <strong>Réponse:</strong><br/>
+    Ca se {{ msgDisplayed.modal1.action }} en {{ msgDisplayed.modal1.dpt }}
+  </p>
+</div>
+
+<div class="reveal" id="finalScoresModal" data-reveal>
+  <p class="lead">Wouhaaaaaaaa</p>
+  <hr>
+  <p>Tu as <span class="bigScore">{{ game.score }}</span> point(s)</p>
+  <hr>
+  <p>
+    <ul>
+      <li ng-repeat="question in game.questions">"{{ question.produit }}" est en {{ question.dpt }}</li>
+    </ul>
+  </p>
+  <p class="text-center">
+    <button class="button" ng-click="reloadGame()">Nouvelle partie</button>
+    <button class="button" ng-click="saveScore()" ng-hide="states.saveScoreOk">Enregistrer le score</button>
+    <button class="button" disabled="disabled" ng-show="states.saveScoreOk">Score enregitré</button>
+  </p>
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

@@ -1,0 +1,251 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://glou-glou-miam-miam.appspot.com/_ah/api",
+  "name" : "highscoresendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://glou-glou-miam-miam.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "mycompany.com",
+  "ownerName" : "mycompany.com",
+  "packagePath" : "services",
+  "methods" : {
+    "highscoresendpoint.listHighScores" : {
+      "path" : "listHighScores",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.listHighScores",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.listTenHighScores" : {
+      "path" : "listTenHighScores",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.listTenHighScores",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.getHighScores" : {
+      "path" : "highscores/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.getHighScores",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.insertHighScores" : {
+      "path" : "highscores",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "clientIds" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.insertHighScores",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.updateHighScores" : {
+      "path" : "updateHighScores",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "clientIds" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.updateHighScores",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.updateNewHighScores" : {
+      "path" : "updateNewHighScores",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "clientIds" : [ "815372761689-3qvas5q59toimnfb0rjslolrc8n30umj.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.updateNewHighScores",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "highscoresendpoint.removeHighScores" : {
+      "path" : "highscores/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "glougloumiammiam.HighScoresEndpoint.removeHighScores",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_HighScores" : {
+        "id" : "CollectionResponse_HighScores",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "HighScores"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "HighScores" : {
+        "id" : "HighScores",
+        "type" : "object",
+        "properties" : {
+          "googleId" : {
+            "type" : "string"
+          },
+          "nickName" : {
+            "type" : "string"
+          },
+          "score" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "HighScoresCollection" : {
+        "id" : "HighScoresCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "HighScores"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "glougloumiammiam.HighScoresEndpoint.listHighScores" : {
+        "response" : {
+          "$ref" : "CollectionResponse_HighScores"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.listTenHighScores" : {
+        "response" : {
+          "$ref" : "HighScoresCollection"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.getHighScores" : {
+        "response" : {
+          "$ref" : "HighScores"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.insertHighScores" : {
+        "request" : {
+          "$ref" : "HighScores"
+        },
+        "response" : {
+          "$ref" : "HighScores"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.updateHighScores" : {
+        "request" : {
+          "$ref" : "HighScores"
+        },
+        "response" : {
+          "$ref" : "HighScores"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.updateNewHighScores" : {
+        "request" : {
+          "$ref" : "HighScores"
+        },
+        "response" : {
+          "$ref" : "HighScores"
+        }
+      },
+      "glougloumiammiam.HighScoresEndpoint.removeHighScores" : {
+      }
+    }
+  }
+}

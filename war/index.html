@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Glou Glou Miam Miam</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="GlouGlouMiamMiam/app/styles/foundation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="GlouGlouMiamMiam/app/styles/main.css">
+  </head>
+  <body ng-app="glouGlouMiamMiamApp">
+
+    <!-- MENU -->
+    <div ng-controller="TopMenuCtrl">
+      <div class="title-bar" data-responsive-toggle="top-bar">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">Menu</div>
+      </div>
+
+      <div class="title-bar stacked-for-medium" id="top-bar">
+        <div class="title-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text"><a class="menu-text homeButton" ui-sref="index">Glou Glou Miam Miam</a></li>
+            <li><button class="button" ui-sref="game">Jouer !</button></li>
+          </ul>
+        </div>
+        <div class="title-bar-right">
+          <ul class="menu">
+            <!-- <li><button type="button" class="button" data-open="loginModal">Log In</button></li> -->
+            <li>
+              <button type="button" class="button" ui-sref="highscores">High Scores</button>
+              <button type="button" class="button" ng-click="doSignup()" ng-hide="login">Log In</button>
+              <button type="button" class="button secondary hollow" ng-show="login">{{ user.given_name }}</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="container">
+      <div class="callout error ng-cloak" ng-show="rootStates.mainError">
+        <h5>Aïe...</h5>
+        <p>Tout il est cassé, l'application marche plus...</p>
+      </div>
+
+      <div ui-view></div>
+    </div>
+
+    <!-- Modal login -->
+    <div class="tiny reveal" id="loginModal" data-reveal>
+      <div class="row">
+        <div class="columns small-12">
+          <h3>Login</h3>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Mail
+              <input type="text" placeholder="Mail">
+            </label>
+          </div>
+          <div class="small-12 columns">
+            <label>Mot de passe
+              <input type="password" placeholder="Password">
+            </label>
+          </div>
+          <button type="button" class="expanded button">Log In</button>
+        </div>
+      </form>
+
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.6/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
+    <script src="GlouGlouMiamMiam/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.6/angular-sanitize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.5.6/angular-touch.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js'></script>
+    <script src='GlouGlouMiamMiam/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+    <!-- <script src='../bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="GlouGlouMiamMiam/bower_components/ui-leaflet/dist/ui-leaflet.min.js"></script>
+    <script src="GlouGlouMiamMiam/bower_components/angular-google-gapi/dist/angular-google-gapi.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="GlouGlouMiamMiam/app/scripts/controllers/topMenuCtrl.js"></script>
+    <script src="GlouGlouMiamMiam/app/scripts/controllers/indexCtrl.js"></script>
+    <script src="GlouGlouMiamMiam/app/scripts/controllers/gameCtrl.js"></script>
+    <script src="GlouGlouMiamMiam/app/scripts/controllers/highScoresCtrl.js"></script>
+
+    <!-- Foundation -->
+    <script src="GlouGlouMiamMiam/app/scripts/foundation/vendor/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+    <script type="text/javascript"> 
+      $(document).foundation();
+    </script>
+
+</body>
+</html>

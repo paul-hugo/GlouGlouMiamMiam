@@ -1,0 +1,79 @@
+.leafletMap {
+	width: 100%;
+	height: 480px;
+}
+
+html { 
+  background: url(../images/food.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: auto;
+}
+
+body {
+	background-color: transparent;
+}
+
+.ng-cloak { display: none !important; }
+
+.homeButton {
+	margin: 0 !important; 
+	padding: 0 !important;
+}
+/* Index */
+.indexButton {
+	margin-top: 200px;
+}
+
+/* TIMELINE */
+.div-timeline {
+	margin-top: 50px;
+}
+.timeline-badge {
+	margin: 0 5px;
+}
+
+/* SCORE */
+.div-score {
+	margin-top: 20px;
+}
+
+.bigScore {
+	font-style: bold;
+	font-size: xx-large;
+}
+
+/* QUESTION*/
+
+.div-question {
+	margin: 30px 0;
+}
+
+.div-question img {
+	width: 400px;
+}
+
+/* BUTTONS */
+.div-buttons {
+	margin-top: 10px;
+}
+
+/* MAPS */
+.div-map {
+
+}
+.div-map h3:first {
+	margin-top: 30px;
+}
+.angular-google-map-container { 
+	height: 500px;
+	margin: 20px 0;
+}
+
+.game-row {
+	margin-top: 50px;
+}
+.game {
+}
