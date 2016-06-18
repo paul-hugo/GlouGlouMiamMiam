@@ -1,8 +1,3 @@
-.leafletMap {
-	width: 100%;
-	height: 480px;
-}
-
 html { 
   background: url(../images/food.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -65,15 +60,13 @@ body {
 }
 
 /* MAPS */
-.div-map {
-
+.leafletMap {
+	width: 100%;
+	height: 700px;
 }
+
 .div-map h3:first {
 	margin-top: 30px;
-}
-.angular-google-map-container { 
-	height: 500px;
-	margin: 20px 0;
 }
 
 .game-row {

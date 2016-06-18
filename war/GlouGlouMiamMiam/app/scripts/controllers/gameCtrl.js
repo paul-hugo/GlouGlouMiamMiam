@@ -141,8 +141,7 @@ angular.module('glouGlouMiamMiamApp')
     function getQuestions(nbQuestions) {
 
       // Bornes min-max pour le random
-      var borneMax = 1000,
-//          borneMax = 10998,
+      var borneMax = 10998,
           borneMin = 1;
       // Random
       var id = Math.floor((Math.random() * borneMax) + borneMin);
@@ -504,7 +503,6 @@ angular.module('glouGlouMiamMiamApp')
     };
     
     $scope.GoToHighscores = function () {
-    	$('#finalScoresModal').foundation('close');
     	$state.go('highscores');
     }
 
@@ -517,10 +515,10 @@ angular.module('glouGlouMiamMiamApp')
       france: {
           lat: 46.35,
           lng: 2.56,
-          zoom: 5
+          zoom: 6
       },
       defaults: {
-        scrollWheelZoom: true
+        scrollWheelZoom: false
       },
       events: {
         map: {
